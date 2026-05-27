@@ -21,6 +21,8 @@ import { Link } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
 import { cn } from '@/lib/utils'
 import { useStatus } from '@/hooks/use-status'
+
+const FOOTER_SCRIPT_MARKER = 'data-new-api-footer-script'
 import { useSystemConfig } from '@/hooks/use-system-config'
 
 interface FooterLink {
@@ -175,8 +177,9 @@ export function Footer(props: FooterProps) {
       Array.from(oldScript.attributes).forEach((attr) => {
         script.setAttribute(attr.name, attr.value)
       })
+      script.setAttribute(FOOTER_SCRIPT_MARKER, 'true')
       script.text = oldScript.text || oldScript.textContent || ''
-      document.body.appendChild(script)
+      document.head.appendChild(script)
       appendedScripts.push(script)
     })
 

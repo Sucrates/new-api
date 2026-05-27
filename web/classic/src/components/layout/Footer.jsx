@@ -29,6 +29,8 @@ import { Typography } from '@douyinfe/semi-ui';
 import { getFooterHTML, getLogo, getSystemName } from '../../helpers';
 import { StatusContext } from '../../context/Status';
 
+const FOOTER_SCRIPT_MARKER = 'data-new-api-footer-script';
+
 const FooterBar = () => {
   const { t } = useTranslation();
   const [footer, setFooter] = useState(getFooterHTML());
@@ -237,8 +239,9 @@ const FooterBar = () => {
       Array.from(oldScript.attributes).forEach((attr) => {
         script.setAttribute(attr.name, attr.value);
       });
+      script.setAttribute(FOOTER_SCRIPT_MARKER, 'true');
       script.text = oldScript.text || oldScript.textContent || '';
-      document.body.appendChild(script);
+      document.head.appendChild(script);
       appendedScripts.push(script);
     });
 
