@@ -140,6 +140,7 @@ export function getLucideIcon(key, selected = false) {
     case 'channel':
       return <Layers {...commonProps} color={iconColor} />;
     case 'redemption':
+    case 'chatbox':
       return <Gift {...commonProps} color={iconColor} />;
     case 'user':
     case 'personal':

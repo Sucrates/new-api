@@ -76,6 +76,7 @@ const NotificationSettings = ({
       log: true,
       midjourney: true,
       task: true,
+      chatbox: true,
     },
     personal: {
       enabled: true,
@@ -164,6 +165,7 @@ const NotificationSettings = ({
         log: true,
         midjourney: true,
         task: true,
+        chatbox: true,
       },
       personal: { enabled: true, topup: true, personal: true },
       admin: {
@@ -271,6 +273,7 @@ const NotificationSettings = ({
           description: t('绘图任务记录'),
         },
         { key: 'task', title: t('任务日志'), description: t('系统任务记录') },
+        { key: 'chatbox', title: 'Chatbox AI', description: t('Chatbox AI 兑换与教程') },
       ],
     },
     {

@@ -34,6 +34,7 @@ const routerMap = {
   home: '/',
   channel: '/console/channel',
   token: '/console/token',
+  chatbox: '/console/chatbox-ai',
   redemption: '/console/redemption',
   topup: '/console/topup',
   user: '/console/user',
@@ -104,6 +105,11 @@ const SiderBar = ({ onNavigate = () => {} }) => {
         to: '/task',
         className:
           localStorage.getItem('enable_task') === 'true' ? '' : 'tableHiddle',
+      },
+      {
+        text: 'Chatbox AI',
+        itemKey: 'chatbox',
+        to: '/chatbox-ai',
       },
     ];
 
