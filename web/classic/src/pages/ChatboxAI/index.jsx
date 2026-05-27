@@ -145,24 +145,24 @@ const ChatboxAI = () => {
         className='mx-auto max-w-5xl overflow-hidden rounded-3xl shadow-sm'
         bodyStyle={{ padding: 0 }}
       >
-        <div className='relative overflow-hidden bg-gradient-to-r from-yellow-300 via-orange-500 to-rose-500 p-[2px] shadow-[0_24px_70px_rgba(244,63,94,0.38)]'>
-          <div className='relative overflow-hidden rounded-[28px] bg-[#090909] px-6 py-7 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] md:px-8'>
-            <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_8%,rgba(250,204,21,0.42),transparent_30%),radial-gradient(circle_at_88%_15%,rgba(244,63,94,0.36),transparent_34%),radial-gradient(circle_at_50%_105%,rgba(147,51,234,0.34),transparent_36%)]' />
-            <div className='pointer-events-none absolute -left-16 -top-16 h-36 w-36 rounded-full bg-yellow-400/30 blur-3xl' />
-            <div className='pointer-events-none absolute -right-20 -bottom-20 h-44 w-44 rounded-full bg-rose-500/35 blur-3xl' />
-            <div className='pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-yellow-200/80 to-transparent' />
+        <div className='relative overflow-hidden bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 p-[2px] shadow-[0_22px_60px_rgba(244,63,94,0.28)]'>
+          <div className='relative overflow-hidden rounded-[28px] bg-gradient-to-br from-white via-orange-50 to-rose-50 px-6 py-7 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] dark:from-[#090909] dark:via-[#111111] dark:to-[#1f0b12] dark:text-white md:px-8'>
+            <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_8%,rgba(251,191,36,0.38),transparent_30%),radial-gradient(circle_at_88%_15%,rgba(244,63,94,0.22),transparent_34%),radial-gradient(circle_at_50%_105%,rgba(147,51,234,0.16),transparent_36%)] dark:bg-[radial-gradient(circle_at_12%_8%,rgba(250,204,21,0.42),transparent_30%),radial-gradient(circle_at_88%_15%,rgba(244,63,94,0.36),transparent_34%),radial-gradient(circle_at_50%_105%,rgba(147,51,234,0.34),transparent_36%)]' />
+            <div className='pointer-events-none absolute -left-16 -top-16 h-36 w-36 rounded-full bg-amber-300/45 blur-3xl dark:bg-yellow-400/30' />
+            <div className='pointer-events-none absolute -right-20 -bottom-20 h-44 w-44 rounded-full bg-rose-300/40 blur-3xl dark:bg-rose-500/35' />
+            <div className='pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent dark:via-yellow-200/80' />
             <div className='relative flex flex-col gap-4'>
-              <span className='inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400 px-4 py-1.5 text-xs font-black tracking-[0.18em] text-white shadow-[0_0_28px_rgba(249,115,22,0.55)] ring-1 ring-white/20'>
+              <span className='inline-flex w-fit items-center gap-2 rounded-full bg-white/86 px-4 py-1.5 text-xs font-black tracking-[0.18em] text-orange-700 shadow-[0_10px_28px_rgba(249,115,22,0.18)] ring-1 ring-orange-200/80 backdrop-blur dark:bg-gradient-to-r dark:from-red-600 dark:via-orange-500 dark:to-yellow-400 dark:text-white dark:shadow-[0_0_28px_rgba(249,115,22,0.55)] dark:ring-white/20'>
                 <IconGift /> Chatbox AI
               </span>
               <div>
                 <Title
                   heading={2}
-                  className='!m-0 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-300 bg-clip-text !text-3xl !font-black !leading-tight !text-transparent drop-shadow-[0_0_18px_rgba(251,146,60,0.45)] md:!text-4xl'
+                  className='!m-0 !text-3xl !font-black !leading-tight !text-slate-950 drop-shadow-[0_2px_0_rgba(255,255,255,0.65)] dark:bg-gradient-to-r dark:from-red-500 dark:via-orange-400 dark:to-yellow-300 dark:bg-clip-text dark:!text-transparent dark:drop-shadow-[0_0_18px_rgba(251,146,60,0.45)] md:!text-4xl'
                 >
                   Chatbox AI
                 </Title>
-                <Paragraph className='!mt-2 !mb-0 !text-sm !font-semibold !text-white/90 md:!text-base'>
+                <Paragraph className='!mt-2 !mb-0 !text-sm !font-semibold !text-slate-700 dark:!text-white/90 md:!text-base'>
                   兑换 API 密钥并查看完整使用教程
                 </Paragraph>
               </div>
