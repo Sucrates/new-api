@@ -71,6 +71,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ env.GHCR_REPOSITORY }}:alpha-${{ matrix.arch }}
+            ghcr.io/${{ env.GHCR_REPOSITORY }}:latest-${{ matrix.arch }}
             ghcr.io/${{ env.GHCR_REPOSITORY }}:${{ steps.version.outputs.value }}-${{ matrix.arch }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
@@ -89,6 +90,7 @@ jobs:
           echo "### Docker Image Digest (${{ matrix.arch }})" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
           echo "ghcr.io/${{ env.GHCR_REPOSITORY }}:alpha-${{ matrix.arch }}" >> $GITHUB_STEP_SUMMARY
+          echo "ghcr.io/${{ env.GHCR_REPOSITORY }}:latest-${{ matrix.arch }}" >> $GITHUB_STEP_SUMMARY
           echo "${{ steps.build.outputs.digest }}" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
 
@@ -128,6 +130,13 @@ jobs:
             -t ghcr.io/${GHCR_REPOSITORY}:alpha \
             ghcr.io/${GHCR_REPOSITORY}:alpha-amd64 \
             ghcr.io/${GHCR_REPOSITORY}:alpha-arm64
+
+      - name: Create & push manifest (GHCR - latest)
+        run: |
+          docker buildx imagetools create \
+            -t ghcr.io/${GHCR_REPOSITORY}:latest \
+            ghcr.io/${GHCR_REPOSITORY}:latest-amd64 \
+            ghcr.io/${GHCR_REPOSITORY}:latest-arm64
 
       - name: Create & push manifest (GHCR - versioned alpha)
         run: |
