@@ -178,43 +178,41 @@ const Home = () => {
                   <p className='text-base md:text-lg lg:text-xl text-semi-color-text-1 mt-4 md:mt-6 max-w-xl'>
                     {t('多模型统一接入，只需将基址替换为：')}
                   </p>
-                  <div className='mt-7 w-full max-w-[650px] px-1'>
-                    <div className='relative mx-auto flex w-full flex-col items-center rounded-[32px] border border-[#FBEFE3] bg-[#FFFDF9] px-5 pb-5 pt-12 shadow-[0_16px_40px_rgba(222,124,54,0.08)] sm:px-8 sm:pb-7 sm:pt-14 dark:border-orange-900/40 dark:bg-[#120d0a] dark:shadow-[0_20px_60px_rgba(255,80,27,0.16)]'>
-                      <div className='absolute left-1/2 top-0 -translate-x-1/2 rounded-b-[14px] bg-gradient-to-b from-[#FFA834] to-[#FF6611] px-8 py-2 text-sm font-bold tracking-[0.16em] text-white shadow-[0_10px_24px_rgba(255,102,17,0.22)] sm:px-11 sm:text-lg'>
+                  <div className='mt-6 w-full max-w-xl px-1'>
+                    <div className='relative mx-auto flex w-full flex-col items-center rounded-[22px] border border-[#FBEFE3] bg-[#FFFDF9] px-4 pb-3 pt-8 shadow-[0_12px_28px_rgba(222,124,54,0.08)] sm:px-5 sm:pb-4 sm:pt-9 dark:border-orange-900/40 dark:bg-[#120d0a] dark:shadow-[0_16px_42px_rgba(255,80,27,0.14)]'>
+                      <div className='absolute left-1/2 top-0 -translate-x-1/2 rounded-b-xl bg-gradient-to-b from-[#FFA834] to-[#FF6611] px-6 py-1 text-[11px] font-bold tracking-[0.14em] text-white shadow-[0_8px_18px_rgba(255,102,17,0.18)] sm:text-xs'>
                         好友邀请奖励
                       </div>
 
-                      <div className='relative mt-4 text-center text-[30px] font-extrabold leading-[1.38] tracking-wide text-[#2B2A2A] sm:text-[44px] dark:text-orange-50'>
-                        <span className='hidden sm:block pointer-events-none absolute -left-9 top-4 h-6 w-4 scale-x-[-1] rounded-full border-t-[3px] border-orange-600' />
-                        <span className='hidden sm:block pointer-events-none absolute -right-9 top-4 h-6 w-4 rounded-full border-t-[3px] border-orange-600' />
-                        一月内邀 <span className='mx-1 font-black text-[#FF501B] sm:mx-2 sm:text-[60px]'>2</span> 人
+                      <div className='relative mt-1 text-center text-[18px] font-extrabold leading-[1.25] tracking-wide text-[#2B2A2A] sm:text-[22px] dark:text-orange-50'>
+                        一月内邀 <span className='mx-1 font-black text-[#FF501B] sm:text-[30px]'>2</span> 人
                         <br />
-                        每人充值满 <span className='mx-1 font-black text-[#FF501B] sm:mx-2 sm:text-[60px]'>50</span> 元
+                        每人充值满 <span className='mx-1 font-black text-[#FF501B] sm:text-[30px]'>50</span> 元
                       </div>
 
-                      <div className='my-6 w-full border-t-2 border-dashed border-[#F3E2D3] sm:my-8 dark:border-orange-900/50' />
+                      <div className='my-2.5 w-full border-t border-dashed border-[#F3E2D3] dark:border-orange-900/50' />
 
-                      <div className='mb-6 flex items-center justify-center sm:mb-9'>
-                        <div className='mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#FF6633] to-[#FF3c00] text-2xl font-bold text-white shadow-[0_4px_10px_rgba(255,60,0,0.22)] sm:mr-4 sm:h-[58px] sm:w-[58px] sm:rounded-2xl sm:text-[32px]'>
+                      <div className='mb-3 flex items-center justify-center'>
+                        <div className='mr-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#FF6633] to-[#FF3c00] text-sm font-bold text-white shadow-[0_4px_10px_rgba(255,60,0,0.18)] sm:h-8 sm:w-8 sm:text-base'>
                           奖
                         </div>
-                        <span className='mr-2 font-black leading-none tracking-[-0.04em] text-[#FF501B] text-[68px] sm:mr-4 sm:text-[105px]'>20</span>
-                        <span className='whitespace-nowrap text-[26px] font-extrabold tracking-wide text-[#2B2A2A] sm:text-[42px] dark:text-orange-50'>元现金到账</span>
+                        <span className='mr-2 text-[38px] font-black leading-none tracking-[-0.04em] text-[#FF501B] sm:text-[46px]'>20</span>
+                        <span className='whitespace-nowrap text-base font-extrabold tracking-wide text-[#2B2A2A] sm:text-xl dark:text-orange-50'>元现金到账</span>
                       </div>
 
-                      <div className='flex w-full flex-col gap-0 rounded-[20px] bg-[#FFF6EE] p-3 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:p-[18px_24px] dark:bg-orange-950/30'>
-                        <div className='flex items-center whitespace-nowrap py-1 text-base font-bold text-[#3C3A39] sm:text-lg dark:text-orange-50'>
-                          <span className='mr-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F0A23A] text-white'>👥</span>
+                      <div className='flex w-full items-center justify-between gap-2 rounded-xl bg-[#FFF6EE] px-3 py-2 dark:bg-orange-950/30'>
+                        <div className='flex items-center whitespace-nowrap text-[11px] font-bold text-[#3C3A39] sm:text-xs dark:text-orange-50'>
+                          <span className='mr-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#F0A23A] text-[10px] text-white'>👥</span>
                           邀请 2 人
                         </div>
-                        <div className='h-px w-full bg-[#EAD6C5] sm:h-6 sm:w-px dark:bg-orange-900/50' />
-                        <div className='flex items-center whitespace-nowrap py-1 text-base font-bold text-[#3C3A39] sm:text-lg dark:text-orange-50'>
-                          <span className='mr-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E2522B] text-white'>💳</span>
-                          每人充值满 50 元
+                        <div className='h-4 w-px shrink-0 bg-[#EAD6C5] dark:bg-orange-900/50' />
+                        <div className='flex items-center whitespace-nowrap text-[11px] font-bold text-[#3C3A39] sm:text-xs dark:text-orange-50'>
+                          <span className='mr-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#E2522B] text-[10px] text-white'>💳</span>
+                          满 50 元
                         </div>
-                        <div className='h-px w-full bg-[#EAD6C5] sm:h-6 sm:w-px dark:bg-orange-900/50' />
-                        <div className='flex items-center whitespace-nowrap py-1 text-base font-bold text-[#3C3A39] sm:text-lg dark:text-orange-50'>
-                          <span className='mr-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#29BE72] text-white'>✓</span>
+                        <div className='h-4 w-px shrink-0 bg-[#EAD6C5] dark:bg-orange-900/50' />
+                        <div className='flex items-center whitespace-nowrap text-[11px] font-bold text-[#3C3A39] sm:text-xs dark:text-orange-50'>
+                          <span className='mr-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#29BE72] text-[10px] text-white'>✓</span>
                           随时提现
                         </div>
                       </div>
@@ -299,7 +297,7 @@ const Home = () => {
                   <div className='flex items-center mb-6 md:mb-8 justify-center'>
                     <Text
                       type='tertiary'
-                      className='text-lg md:text-xl lg:text-2xl font-light'
+                      className='text-lg md:text-xl lg:text-xl font-light'
                     >
                       {t('支持众多的大模型供应商')}
                     </Text>
@@ -366,7 +364,7 @@ const Home = () => {
                       <Xinference.Color size={40} />
                     </div>
                     <div className='w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center'>
-                      <Typography.Text className='!text-lg sm:!text-xl md:!text-2xl lg:!text-3xl font-bold'>
+                      <Typography.Text className='!text-lg sm:!text-xl md:!text-xl lg:!text-3xl font-bold'>
                         30+
                       </Typography.Text>
                     </div>
