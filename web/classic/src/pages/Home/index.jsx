@@ -179,41 +179,31 @@ const Home = () => {
                     {t('多模型统一接入，只需将基址替换为：')}
                   </p>
                   <div className='mt-6 w-full max-w-xl px-1'>
-                    <div className='relative mx-auto flex w-full flex-col items-center rounded-[22px] border border-[#FBEFE3] bg-[#FFFDF9] px-4 pb-3 pt-8 shadow-[0_12px_28px_rgba(222,124,54,0.08)] sm:px-5 sm:pb-4 sm:pt-9 dark:border-orange-900/40 dark:bg-[#120d0a] dark:shadow-[0_16px_42px_rgba(255,80,27,0.14)]'>
-                      <div className='absolute left-1/2 top-0 -translate-x-1/2 rounded-b-xl bg-gradient-to-b from-[#FFA834] to-[#FF6611] px-6 py-1 text-[11px] font-bold tracking-[0.14em] text-white shadow-[0_8px_18px_rgba(255,102,17,0.18)] sm:text-xs'>
+                    <div className='relative mx-auto w-full overflow-hidden rounded-2xl border border-[#F7E4D2] bg-[#FFFDF9] px-5 pb-3.5 pt-8 shadow-[0_12px_30px_rgba(222,124,54,0.08)] dark:border-orange-900/40 dark:bg-[#120d0a]'>
+                      <div className='absolute left-1/2 top-0 -translate-x-1/2 rounded-b-lg bg-gradient-to-b from-[#FFA834] to-[#FF6611] px-5 py-1 text-[11px] font-semibold tracking-[0.12em] text-white shadow-[0_8px_18px_rgba(255,102,17,0.18)]'>
                         好友邀请奖励
                       </div>
 
-                      <div className='relative mt-1 text-center text-[18px] font-extrabold leading-[1.25] tracking-wide text-[#2B2A2A] sm:text-[22px] dark:text-orange-50'>
-                        一月内邀 <span className='mx-1 font-black text-[#FF501B] sm:text-[30px]'>2</span> 人
-                        <br />
-                        每人充值满 <span className='mx-1 font-black text-[#FF501B] sm:text-[30px]'>50</span> 元
-                      </div>
-
-                      <div className='my-2.5 w-full border-t border-dashed border-[#F3E2D3] dark:border-orange-900/50' />
-
-                      <div className='mb-3 flex items-center justify-center'>
-                        <div className='mr-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#FF6633] to-[#FF3c00] text-sm font-bold text-white shadow-[0_4px_10px_rgba(255,60,0,0.18)] sm:h-8 sm:w-8 sm:text-base'>
-                          奖
+                      <div className='grid grid-cols-[1fr_auto] items-center gap-4'>
+                        <div className='min-w-0'>
+                          <div className='text-center text-[19px] font-semibold leading-[1.35] tracking-[0.01em] text-[#2B2A2A] sm:text-[21px] dark:text-orange-50'>
+                            <span>一月内邀 </span><span className='font-extrabold text-[#F15A24]'>2</span><span> 人</span>
+                            <span className='mx-2 text-[#E7CDBC]'>/</span>
+                            <span>每人充值满 </span><span className='font-extrabold text-[#F15A24]'>50</span><span> 元</span>
+                          </div>
+                          <div className='mt-3 flex items-center justify-center gap-2 rounded-xl bg-[#FFF6EE] px-3 py-2 text-[12px] font-medium text-[#6A5650] dark:bg-orange-950/30 dark:text-orange-100/80'>
+                            <span className='inline-flex items-center gap-1'>👥 邀请 2 人</span>
+                            <span className='h-3 w-px bg-[#EAD6C5] dark:bg-orange-900/50' />
+                            <span className='inline-flex items-center gap-1'>💳 满 50 元</span>
+                            <span className='h-3 w-px bg-[#EAD6C5] dark:bg-orange-900/50' />
+                            <span className='inline-flex items-center gap-1 text-[#1F9D61]'>✓ 随时提现</span>
+                          </div>
                         </div>
-                        <span className='mr-2 text-[38px] font-black leading-none tracking-[-0.04em] text-[#FF501B] sm:text-[46px]'>20</span>
-                        <span className='whitespace-nowrap text-base font-extrabold tracking-wide text-[#2B2A2A] sm:text-xl dark:text-orange-50'>元现金到账</span>
-                      </div>
 
-                      <div className='flex w-full items-center justify-between gap-2 rounded-xl bg-[#FFF6EE] px-3 py-2 dark:bg-orange-950/30'>
-                        <div className='flex items-center whitespace-nowrap text-[11px] font-bold text-[#3C3A39] sm:text-xs dark:text-orange-50'>
-                          <span className='mr-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#F0A23A] text-[10px] text-white'>👥</span>
-                          邀请 2 人
-                        </div>
-                        <div className='h-4 w-px shrink-0 bg-[#EAD6C5] dark:bg-orange-900/50' />
-                        <div className='flex items-center whitespace-nowrap text-[11px] font-bold text-[#3C3A39] sm:text-xs dark:text-orange-50'>
-                          <span className='mr-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#E2522B] text-[10px] text-white'>💳</span>
-                          满 50 元
-                        </div>
-                        <div className='h-4 w-px shrink-0 bg-[#EAD6C5] dark:bg-orange-900/50' />
-                        <div className='flex items-center whitespace-nowrap text-[11px] font-bold text-[#3C3A39] sm:text-xs dark:text-orange-50'>
-                          <span className='mr-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#29BE72] text-[10px] text-white'>✓</span>
-                          随时提现
+                        <div className='flex shrink-0 items-baseline rounded-xl bg-gradient-to-br from-[#FFF2E8] to-[#FFE5D4] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:from-orange-950/50 dark:to-orange-900/30'>
+                          <span className='mr-1 rounded-md bg-[#F15A24] px-1.5 py-0.5 text-[12px] font-bold leading-none text-white'>奖</span>
+                          <span className='text-[36px] font-extrabold leading-none tracking-[-0.04em] text-[#F15A24] sm:text-[40px]'>20</span>
+                          <span className='ml-1 whitespace-nowrap text-[14px] font-semibold text-[#2B2A2A] dark:text-orange-50'>元到账</span>
                         </div>
                       </div>
                     </div>
