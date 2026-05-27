@@ -16,7 +16,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 For commercial licensing, please contact support@quantumnous.com
 */
-import { Fragment, useMemo } from 'react'
+import { Fragment, useEffect, useMemo, useRef } from 'react'
 import { Link } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
 import { cn } from '@/lib/utils'
@@ -161,6 +161,29 @@ export function Footer(props: FooterProps) {
   const displayName = systemName || props.name || 'New API'
   const isDemoSiteMode = Boolean(demoSiteEnabled)
   const currentYear = new Date().getFullYear()
+  const footerContainerRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const container = footerContainerRef.current
+    if (!container || !footerHtml) return
+
+    const scriptNodes = Array.from(container.querySelectorAll('script'))
+    const appendedScripts: HTMLScriptElement[] = []
+
+    scriptNodes.forEach((oldScript) => {
+      const script = document.createElement('script')
+      Array.from(oldScript.attributes).forEach((attr) => {
+        script.setAttribute(attr.name, attr.value)
+      })
+      script.text = oldScript.text || oldScript.textContent || ''
+      document.body.appendChild(script)
+      appendedScripts.push(script)
+    })
+
+    return () => {
+      appendedScripts.forEach((script) => script.remove())
+    }
+  }, [footerHtml])
 
   const fallbackColumns = useMemo<FooterColumnProps[]>(
     () => [
@@ -232,6 +255,7 @@ export function Footer(props: FooterProps) {
         <div className='mx-auto w-full max-w-6xl px-6 py-5'>
           <div className='bg-muted/20 border-border/50 flex flex-col items-center justify-between gap-4 rounded-2xl border px-4 py-4 backdrop-blur-sm sm:flex-row sm:px-5'>
             <div
+              ref={footerContainerRef}
               className='custom-footer text-muted-foreground min-w-0 text-center text-sm sm:text-left'
               dangerouslySetInnerHTML={{ __html: footerHtml }}
             />

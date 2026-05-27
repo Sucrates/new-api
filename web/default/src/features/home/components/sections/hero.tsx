@@ -132,8 +132,36 @@ export function Hero(props: HeroProps) {
           </p>
 
           <div
+            className='landing-animate-fade-up mt-7 w-full max-w-xl opacity-0'
+            style={{ animationDelay: '160ms' }}
+          >
+            <div className='relative overflow-hidden rounded-[30px] bg-gradient-to-r from-yellow-300 via-orange-500 to-rose-500 p-[2px] shadow-[0_24px_70px_rgba(244,63,94,0.26)] dark:shadow-[0_24px_70px_rgba(244,63,94,0.38)]'>
+              <div className='relative overflow-hidden rounded-[28px] bg-white/96 px-5 py-6 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur md:px-8 dark:bg-[#090909] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]'>
+                <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_8%,rgba(250,204,21,0.26),transparent_30%),radial-gradient(circle_at_88%_15%,rgba(244,63,94,0.16),transparent_34%),radial-gradient(circle_at_50%_105%,rgba(147,51,234,0.10),transparent_36%)] dark:bg-[radial-gradient(circle_at_12%_8%,rgba(250,204,21,0.42),transparent_30%),radial-gradient(circle_at_88%_15%,rgba(244,63,94,0.36),transparent_34%),radial-gradient(circle_at_50%_105%,rgba(147,51,234,0.34),transparent_36%)]' />
+                <div className='pointer-events-none absolute -left-16 -top-16 h-36 w-36 rounded-full bg-yellow-300/35 blur-3xl dark:bg-yellow-400/30' />
+                <div className='pointer-events-none absolute -right-20 -bottom-20 h-44 w-44 rounded-full bg-rose-300/28 blur-3xl dark:bg-rose-500/35' />
+                <div className='pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-orange-300/80 to-transparent dark:via-yellow-200/80' />
+                <div className='relative flex flex-col items-start gap-3 text-left sm:items-center sm:text-center'>
+                  <span className='inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400 px-4 py-1.5 text-xs font-black tracking-[0.18em] text-white shadow-[0_0_28px_rgba(249,115,22,0.55)] ring-1 ring-white/20'>
+                    🔥 限时邀请福利
+                  </span>
+                  <div className='bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 bg-clip-text text-3xl leading-tight font-black text-transparent drop-shadow-sm dark:from-red-500 dark:via-orange-400 dark:to-yellow-300 dark:drop-shadow-[0_0_18px_rgba(251,146,60,0.45)] md:text-4xl'>
+                    满 50 元，赠送 20 元
+                  </div>
+                  <div className='inline-flex items-center rounded-full bg-emerald-600 px-4 py-1.5 text-sm font-bold text-white shadow-[0_10px_24px_rgba(16,185,129,0.24)] ring-1 ring-emerald-200/50 dark:bg-emerald-500 dark:shadow-[0_0_24px_rgba(16,185,129,0.45)] dark:ring-emerald-200/40'>
+                    消费达标即可赠送，可提现
+                  </div>
+                  <div className='text-sm font-semibold text-slate-800 md:text-base dark:text-white/90'>
+                    一月内邀请 <span className='font-black text-red-600 drop-shadow-sm dark:text-red-400 dark:drop-shadow-[0_0_10px_rgba(248,113,113,0.7)]'>2 位以上</span> 好友成功注册，即可参与活动
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
             className='landing-animate-fade-up mt-8 flex flex-wrap items-center gap-3 opacity-0'
-            style={{ animationDelay: '180ms' }}
+            style={{ animationDelay: '220ms' }}
           >
             {props.isAuthenticated ? (
               <>

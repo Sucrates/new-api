@@ -17,7 +17,13 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import React, { useEffect, useState, useMemo, useContext } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useMemo,
+  useContext,
+  useRef,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { Typography } from '@douyinfe/semi-ui';
 import { getFooterHTML, getLogo, getSystemName } from '../../helpers';
@@ -29,6 +35,7 @@ const FooterBar = () => {
   const systemName = getSystemName();
   const logo = getLogo();
   const [statusState] = useContext(StatusContext);
+  const footerContainerRef = useRef(null);
   const isDemoSiteMode = statusState?.status?.demo_site_enabled || false;
 
   const loadFooter = () => {
@@ -218,12 +225,35 @@ const FooterBar = () => {
     loadFooter();
   }, []);
 
+  useEffect(() => {
+    const container = footerContainerRef.current;
+    if (!container || !footer) return;
+
+    const scriptNodes = Array.from(container.querySelectorAll('script'));
+    const appendedScripts = [];
+
+    scriptNodes.forEach((oldScript) => {
+      const script = document.createElement('script');
+      Array.from(oldScript.attributes).forEach((attr) => {
+        script.setAttribute(attr.name, attr.value);
+      });
+      script.text = oldScript.text || oldScript.textContent || '';
+      document.body.appendChild(script);
+      appendedScripts.push(script);
+    });
+
+    return () => {
+      appendedScripts.forEach((script) => script.remove());
+    };
+  }, [footer]);
+
   return (
     <div className='w-full'>
       {footer ? (
         <footer className='relative h-auto py-4 px-6 md:px-24 w-full flex items-center justify-center overflow-hidden'>
           <div className='flex flex-col md:flex-row items-center justify-between w-full max-w-[1110px] gap-4'>
             <div
+              ref={footerContainerRef}
               className='custom-footer na-cb6feafeb3990c78 text-sm !text-semi-color-text-1'
               dangerouslySetInnerHTML={{ __html: footer }}
             ></div>
