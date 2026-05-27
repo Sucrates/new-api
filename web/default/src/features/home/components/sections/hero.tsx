@@ -132,28 +132,46 @@ export function Hero(props: HeroProps) {
           </p>
 
           <div
-            className='landing-animate-fade-up mt-7 w-full max-w-xl opacity-0'
+            className='landing-animate-fade-up mt-7 w-full max-w-[650px] opacity-0'
             style={{ animationDelay: '160ms' }}
           >
-            <div className='relative overflow-hidden rounded-[30px] bg-gradient-to-r from-yellow-300 via-orange-500 to-rose-500 p-[2px] shadow-[0_24px_70px_rgba(244,63,94,0.26)] dark:shadow-[0_24px_70px_rgba(244,63,94,0.38)]'>
-              <div className='relative overflow-hidden rounded-[28px] bg-white/96 px-5 py-6 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur md:px-8 dark:bg-[#090909] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]'>
-                <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_8%,rgba(250,204,21,0.26),transparent_30%),radial-gradient(circle_at_88%_15%,rgba(244,63,94,0.16),transparent_34%),radial-gradient(circle_at_50%_105%,rgba(147,51,234,0.10),transparent_36%)] dark:bg-[radial-gradient(circle_at_12%_8%,rgba(250,204,21,0.42),transparent_30%),radial-gradient(circle_at_88%_15%,rgba(244,63,94,0.36),transparent_34%),radial-gradient(circle_at_50%_105%,rgba(147,51,234,0.34),transparent_36%)]' />
-                <div className='pointer-events-none absolute -left-16 -top-16 h-36 w-36 rounded-full bg-yellow-300/35 blur-3xl dark:bg-yellow-400/30' />
-                <div className='pointer-events-none absolute -right-20 -bottom-20 h-44 w-44 rounded-full bg-rose-300/28 blur-3xl dark:bg-rose-500/35' />
-                <div className='pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-orange-300/80 to-transparent dark:via-yellow-200/80' />
-                <div className='relative flex flex-col items-start gap-3 text-left sm:items-center sm:text-center'>
-                  <span className='inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400 px-4 py-1.5 text-xs font-black tracking-[0.18em] text-white shadow-[0_0_28px_rgba(249,115,22,0.55)] ring-1 ring-white/20'>
-                    🔥 限时邀请福利
-                  </span>
-                  <div className='bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 bg-clip-text text-3xl leading-tight font-black text-transparent drop-shadow-sm dark:from-red-500 dark:via-orange-400 dark:to-yellow-300 dark:drop-shadow-[0_0_18px_rgba(251,146,60,0.45)] md:text-4xl'>
-                    满 50 元，赠送 20 元
-                  </div>
-                  <div className='inline-flex items-center rounded-full bg-emerald-600 px-4 py-1.5 text-sm font-bold text-white shadow-[0_10px_24px_rgba(16,185,129,0.24)] ring-1 ring-emerald-200/50 dark:bg-emerald-500 dark:shadow-[0_0_24px_rgba(16,185,129,0.45)] dark:ring-emerald-200/40'>
-                    消费达标即可赠送，可提现
-                  </div>
-                  <div className='text-sm font-semibold text-slate-800 md:text-base dark:text-white/90'>
-                    一月内邀请 <span className='font-black text-red-600 drop-shadow-sm dark:text-red-400 dark:drop-shadow-[0_0_10px_rgba(248,113,113,0.7)]'>2 位以上</span> 好友成功注册，即可参与活动
-                  </div>
+            <div className='relative mx-auto flex w-full flex-col items-center rounded-[32px] border border-[#FBEFE3] bg-[#FFFDF9] px-5 pb-5 pt-12 shadow-[0_16px_40px_rgba(222,124,54,0.08)] sm:px-8 sm:pb-7 sm:pt-14 dark:border-orange-900/40 dark:bg-[#120d0a] dark:shadow-[0_20px_60px_rgba(255,80,27,0.16)]'>
+              <div className='absolute left-1/2 top-0 -translate-x-1/2 rounded-b-[14px] bg-gradient-to-b from-[#FFA834] to-[#FF6611] px-8 py-2 text-sm font-bold tracking-[0.16em] text-white shadow-[0_10px_24px_rgba(255,102,17,0.22)] sm:px-11 sm:text-lg'>
+                好友邀请奖励
+              </div>
+
+              <div className='relative mt-4 text-center text-[30px] font-extrabold leading-[1.38] tracking-wide text-[#2B2A2A] sm:text-[44px] dark:text-orange-50'>
+                <span className='hidden sm:block pointer-events-none absolute -left-9 top-4 h-6 w-4 scale-x-[-1] rounded-full border-t-[3px] border-orange-600' />
+                <span className='hidden sm:block pointer-events-none absolute -right-9 top-4 h-6 w-4 rounded-full border-t-[3px] border-orange-600' />
+                一月内邀 <span className='mx-1 font-black text-[#FF501B] sm:mx-2 sm:text-[60px]'>2</span> 人
+                <br />
+                每人充值满 <span className='mx-1 font-black text-[#FF501B] sm:mx-2 sm:text-[60px]'>50</span> 元
+              </div>
+
+              <div className='my-6 w-full border-t-2 border-dashed border-[#F3E2D3] sm:my-8 dark:border-orange-900/50' />
+
+              <div className='mb-6 flex items-center justify-center sm:mb-9'>
+                <div className='mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#FF6633] to-[#FF3c00] text-2xl font-bold text-white shadow-[0_4px_10px_rgba(255,60,0,0.22)] sm:mr-4 sm:h-[58px] sm:w-[58px] sm:rounded-2xl sm:text-[32px]'>
+                  奖
+                </div>
+                <span className='mr-2 font-black leading-none tracking-[-0.04em] text-[#FF501B] text-[68px] sm:mr-4 sm:text-[105px]'>20</span>
+                <span className='whitespace-nowrap text-[26px] font-extrabold tracking-wide text-[#2B2A2A] sm:text-[42px] dark:text-orange-50'>元现金到账</span>
+              </div>
+
+              <div className='flex w-full flex-col gap-0 rounded-[20px] bg-[#FFF6EE] p-3 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:p-[18px_24px] dark:bg-orange-950/30'>
+                <div className='flex items-center whitespace-nowrap py-1 text-base font-bold text-[#3C3A39] sm:text-lg dark:text-orange-50'>
+                  <span className='mr-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F0A23A] text-white'>👥</span>
+                  邀请 2 人
+                </div>
+                <div className='h-px w-full bg-[#EAD6C5] sm:h-6 sm:w-px dark:bg-orange-900/50' />
+                <div className='flex items-center whitespace-nowrap py-1 text-base font-bold text-[#3C3A39] sm:text-lg dark:text-orange-50'>
+                  <span className='mr-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E2522B] text-white'>💳</span>
+                  每人充值满 50 元
+                </div>
+                <div className='h-px w-full bg-[#EAD6C5] sm:h-6 sm:w-px dark:bg-orange-900/50' />
+                <div className='flex items-center whitespace-nowrap py-1 text-base font-bold text-[#3C3A39] sm:text-lg dark:text-orange-50'>
+                  <span className='mr-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#29BE72] text-white'>✓</span>
+                  随时提现
                 </div>
               </div>
             </div>
