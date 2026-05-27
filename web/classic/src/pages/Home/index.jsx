@@ -185,8 +185,6 @@ const Home = () => {
                       </div>
 
                       <div className='relative text-center text-[22px] font-extrabold leading-[1.36] tracking-[0.02em] text-[#2B2928] sm:text-[26px] dark:text-orange-50'>
-                        <span className='hidden sm:block pointer-events-none absolute -left-8 top-3 h-5 w-4 scale-x-[-1] rounded-full border-t-[3px] border-[#DF6A2B]' />
-                        <span className='hidden sm:block pointer-events-none absolute -right-8 top-3 h-5 w-4 rounded-full border-t-[3px] border-[#DF6A2B]' />
                         一月内邀 <span className='mx-1 font-black text-[#F15A24] sm:text-[34px]'>2</span> 人
                         <br />
                         每人充值满 <span className='mx-1 font-black text-[#F15A24] sm:text-[34px]'>50</span> 元
@@ -194,11 +192,11 @@ const Home = () => {
 
                       <div className='my-3.5 w-full border-t border-dashed border-[#EFDCCB] dark:border-orange-900/50' />
 
-                      <div className='mb-4 flex items-center justify-center'>
-                        <div className='mr-2.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#FF6633] to-[#FF3C00] text-lg font-bold text-white shadow-[0_5px_12px_rgba(255,60,0,0.22)]'>
+                      <div className='mb-4 flex -translate-y-1 items-center justify-center'>
+                        <div className='mr-2.5 flex h-9 w-9 shrink-0 -translate-y-0.5 items-center justify-center rounded-xl bg-gradient-to-br from-[#FF6633] to-[#FF3C00] text-lg font-bold text-white shadow-[0_5px_12px_rgba(255,60,0,0.22)]'>
                           奖
                         </div>
-                        <span className='mr-2.5 text-[56px] font-black leading-none tracking-[-0.05em] text-[#F15A24] sm:text-[64px]'>20</span>
+                        <span className='mr-2.5 -translate-y-0.5 text-[50px] font-black leading-none tracking-[-0.05em] text-[#F15A24] sm:text-[58px]'>20</span>
                         <span className='whitespace-nowrap text-xl font-extrabold tracking-wide text-[#2B2928] sm:text-[24px] dark:text-orange-50'>元现金到账</span>
                       </div>
 
