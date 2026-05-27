@@ -17,7 +17,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Banner,
   Button,
@@ -33,10 +33,13 @@ import {
 import {
   IconBookmark,
   IconCopy,
+  IconCreditCard,
   IconGift,
+  IconHistogram,
   IconKey,
 } from '@douyinfe/semi-icons';
 import { API } from '../../helpers/api';
+import { renderQuota } from '../../helpers';
 import { copy, showError, showSuccess } from '../../helpers/utils';
 import { fetchTokenKey } from '../../helpers/token';
 
@@ -58,7 +61,44 @@ const ChatboxAI = () => {
   const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [apiKey, setApiKey] = useState('');
+  const [tokenStats, setTokenStats] = useState({
+    redeemedCount: 0,
+    activeCount: 0,
+    availableQuota: 0,
+    unlimitedCount: 0,
+  });
   const apiAddress = useMemo(() => buildServerAddress(), []);
+
+  const loadTokenStats = async () => {
+    try {
+      const res = await API.get('/api/token/?p=1&size=100');
+      const { success, data } = res.data || {};
+      if (!success) return;
+
+      const tokens = data?.items || [];
+      const chatboxTokens = tokens.filter((token) =>
+        String(token?.name || '').toLowerCase().includes('chatbox ai'),
+      );
+      const source = chatboxTokens.length > 0 ? chatboxTokens : tokens;
+      const activeTokens = source.filter((token) => token?.status === 1);
+      const unlimitedCount = activeTokens.filter(
+        (token) => token?.unlimited_quota,
+      ).length;
+      const availableQuota = activeTokens.reduce((sum, token) => {
+        if (token?.unlimited_quota) return sum;
+        return sum + Number(token?.remain_quota || 0);
+      }, 0);
+
+      setTokenStats({
+        redeemedCount: source.length,
+        activeCount: activeTokens.length,
+        availableQuota,
+        unlimitedCount,
+      });
+    } catch (error) {
+      console.warn('Failed to load Chatbox token stats', error);
+    }
+  };
 
   const createChatboxKey = async () => {
     const res = await API.post('/api/token/', {
@@ -106,6 +146,7 @@ const ChatboxAI = () => {
       const key = await createChatboxKey();
       setApiKey(key);
       setCode('');
+      await loadTokenStats();
       showSuccess('兑换成功，API Key 已生成');
     } catch (error) {
       showError(error?.message || '兑换失败，请稍后重试');
@@ -118,6 +159,37 @@ const ChatboxAI = () => {
     const ok = await copy(text);
     if (ok) showSuccess(message);
   };
+
+  useEffect(() => {
+    loadTokenStats();
+  }, []);
+
+  const statItems = [
+    {
+      label: '已兑换',
+      value: tokenStats.redeemedCount,
+      icon: <IconGift />,
+      color: 'from-orange-500 to-rose-500',
+      bg: 'bg-orange-50 text-orange-700 ring-orange-100 dark:bg-orange-950/30 dark:text-orange-200 dark:ring-orange-900/50',
+    },
+    {
+      label: '活跃密钥',
+      value: tokenStats.activeCount,
+      icon: <IconKey />,
+      color: 'from-emerald-500 to-teal-500',
+      bg: 'bg-emerald-50 text-emerald-700 ring-emerald-100 dark:bg-emerald-950/30 dark:text-emerald-200 dark:ring-emerald-900/50',
+    },
+    {
+      label: '可用额度',
+      value:
+        tokenStats.unlimitedCount > 0
+          ? '无限额度'
+          : renderQuota(tokenStats.availableQuota),
+      icon: <IconCreditCard />,
+      color: 'from-blue-500 to-indigo-500',
+      bg: 'bg-blue-50 text-blue-700 ring-blue-100 dark:bg-blue-950/30 dark:text-blue-200 dark:ring-blue-900/50',
+    },
+  ];
 
   const steps = [
     {
@@ -151,20 +223,43 @@ const ChatboxAI = () => {
             <div className='pointer-events-none absolute -left-16 -top-16 h-36 w-36 rounded-full bg-amber-300/45 blur-3xl dark:bg-yellow-400/30' />
             <div className='pointer-events-none absolute -right-20 -bottom-20 h-44 w-44 rounded-full bg-rose-300/40 blur-3xl dark:bg-rose-500/35' />
             <div className='pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent dark:via-yellow-200/80' />
-            <div className='relative flex flex-col gap-4'>
-              <span className='inline-flex w-fit items-center gap-2 rounded-full bg-white/86 px-4 py-1.5 text-xs font-black tracking-[0.18em] text-orange-700 shadow-[0_10px_28px_rgba(249,115,22,0.18)] ring-1 ring-orange-200/80 backdrop-blur dark:bg-gradient-to-r dark:from-red-600 dark:via-orange-500 dark:to-yellow-400 dark:text-white dark:shadow-[0_0_28px_rgba(249,115,22,0.55)] dark:ring-white/20'>
-                <IconGift /> Chatbox AI
-              </span>
-              <div>
-                <Title
-                  heading={2}
-                  className='!m-0 !text-3xl !font-black !leading-tight !text-slate-950 drop-shadow-[0_2px_0_rgba(255,255,255,0.65)] dark:bg-gradient-to-r dark:from-red-500 dark:via-orange-400 dark:to-yellow-300 dark:bg-clip-text dark:!text-transparent dark:drop-shadow-[0_0_18px_rgba(251,146,60,0.45)] md:!text-4xl'
-                >
-                  Chatbox AI
-                </Title>
-                <Paragraph className='!mt-2 !mb-0 !text-sm !font-semibold !text-slate-700 dark:!text-white/90 md:!text-base'>
-                  兑换 API 密钥并查看完整使用教程
-                </Paragraph>
+            <div className='relative grid gap-5 lg:grid-cols-[1fr_420px] lg:items-center'>
+              <div className='flex flex-col gap-4'>
+                <span className='inline-flex w-fit items-center gap-2 rounded-full bg-white/86 px-4 py-1.5 text-xs font-black tracking-[0.18em] text-orange-700 shadow-[0_10px_28px_rgba(249,115,22,0.18)] ring-1 ring-orange-200/80 backdrop-blur dark:bg-gradient-to-r dark:from-red-600 dark:via-orange-500 dark:to-yellow-400 dark:text-white dark:shadow-[0_0_28px_rgba(249,115,22,0.55)] dark:ring-white/20'>
+                  <IconGift /> Chatbox AI
+                </span>
+                <div>
+                  <Title
+                    heading={2}
+                    className='!m-0 !text-3xl !font-black !leading-tight !text-slate-950 drop-shadow-[0_2px_0_rgba(255,255,255,0.65)] dark:bg-gradient-to-r dark:from-red-500 dark:via-orange-400 dark:to-yellow-300 dark:bg-clip-text dark:!text-transparent dark:drop-shadow-[0_0_18px_rgba(251,146,60,0.45)] md:!text-4xl'
+                  >
+                    Chatbox AI
+                  </Title>
+                  <Paragraph className='!mt-2 !mb-0 !text-sm !font-semibold !text-slate-700 dark:!text-white/90 md:!text-base'>
+                    兑换 API 密钥并查看完整使用教程
+                  </Paragraph>
+                </div>
+              </div>
+
+              <div className='grid grid-cols-1 gap-3 sm:grid-cols-3'>
+                {statItems.map((item) => (
+                  <div
+                    key={item.label}
+                    className={`rounded-2xl px-4 py-3 shadow-sm ring-1 backdrop-blur ${item.bg}`}
+                  >
+                    <div className='mb-2 flex items-center justify-between gap-2 text-xs font-bold'>
+                      <span>{item.label}</span>
+                      <span
+                        className={`flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br ${item.color} text-white shadow-md`}
+                      >
+                        {item.icon}
+                      </span>
+                    </div>
+                    <div className='truncate text-2xl font-black leading-none'>
+                      {item.value}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
